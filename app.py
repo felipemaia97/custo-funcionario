@@ -56,8 +56,8 @@ if st.session_state.dados_funcionarios:
              "Provisão 13º", "Provisão Férias", "Provisão 1/3 Férias", "Multa FGTS",
              "Reserva Total", "Custo Total"]]
     # Seleciona apenas colunas numéricas para formatar
-numeric_cols = df.select_dtypes(include=['float', 'int']).columns
-st.dataframe(df.style.format({col: "R$ {:,.2f}" for col in numeric_cols}))
+    numeric_cols = df.select_dtypes(include=['float', 'int']).columns
+    st.dataframe(df.style.format({col: "R$ {:,.2f}" for col in numeric_cols}))
 
 
     # Botão para baixar CSV
@@ -68,5 +68,4 @@ st.dataframe(df.style.format({col: "R$ {:,.2f}" for col in numeric_cols}))
         file_name='custo_funcionarios.csv',
         mime='text/csv'
     )
-else:
-    st.info("Adicione pelo menos um funcionário para ver o resultado.")
+elseif: st.info("Adicione pelo menos um funcionário para ver o resultado.")
