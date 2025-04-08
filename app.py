@@ -55,7 +55,10 @@ if st.session_state.dados_funcionarios:
     df = df[["Nome", "Salário Bruto", "Benefícios", "INSS Patronal", "FGTS",
              "Provisão 13º", "Provisão Férias", "Provisão 1/3 Férias", "Multa FGTS",
              "Reserva Total", "Custo Total"]]
-    st.dataframe(df.style.format("R$ {:,.2f}"))
+    # Seleciona apenas colunas numéricas para formatar
+numeric_cols = df.select_dtypes(include=['float', 'int']).columns
+st.dataframe(df.style.format({col: "R$ {:,.2f}" for col in numeric_cols}))
+
 
     # Botão para baixar CSV
     csv = df.to_csv(index=False).encode('utf-8-sig')
